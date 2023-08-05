@@ -7,7 +7,6 @@ class CategoryManager(models.Manager):
         products = Product.objects.filter(category=self.category)
         return products
 
-
 class ProductManager(models.Manager):
     def queryset (self):
         return super(ProductManager, self).queryset().filter(is_in_stock=True)
