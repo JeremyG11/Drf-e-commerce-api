@@ -1,0 +1,206 @@
+openapi: 3.0.3
+info:
+  title: Django rest framework e-commerce api
+  version: 1.0.0
+  description: 'This a e-commerce api built with Django Rest framework '
+paths:
+  /order/:
+    get:
+      operationId: order_retrieve
+      tags:
+      - order
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /order/delete/{str}:{order_id}:
+    delete:
+      operationId: order_delete_:_destroy
+      parameters:
+      - in: path
+        name: order_id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: str
+        schema:
+          type: string
+        required: true
+      tags:
+      - order
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /order/place_order/:
+    post:
+      operationId: order_place_order_create
+      tags:
+      - order
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          description: No response body
+  /store/categories/:
+    get:
+      operationId: store_categories_list
+      tags:
+      - store
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+          description: ''
+    post:
+      operationId: store_categories_create
+      tags:
+      - store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Category'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Category'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+  /store/products/:
+    get:
+      operationId: store_products_list
+      tags:
+      - store
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+          description: ''
+    post:
+      operationId: store_products_create
+      tags:
+      - store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Product'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+      required:
+      - name
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        item_name:
+          type: string
+          maxLength: 255
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,2})?$
+        description:
+          type: string
+        slug:
+          type: string
+          maxLength: 225
+          pattern: ^[-a-zA-Z0-9_]+$
+        image:
+          type: string
+          format: uri
+        is_active:
+          type: boolean
+        is_in_stock:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+        category:
+          type: integer
+        created_by:
+          type: integer
+      required:
+      - category
+      - created
+      - id
+      - item_name
+      - price
+      - slug
+      - updated
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
