@@ -28,6 +28,7 @@ duplicity==0.8.21
 fasteners==0.14.1
 filelock==3.12.2
 future==0.18.2
+gunicorn==21.2.0
 httplib2==0.20.2
 idna==3.3
 importlib-metadata==4.6.4
@@ -50,6 +51,7 @@ more-itertools==8.10.0
 netifaces==0.11.0
 oauthlib==3.2.0
 olefile==0.46
+packaging==23.2
 paramiko==2.9.3
 pexpect==4.8.0
 Pillow==10.0.0
