@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/gatwech/Desktop/Django/drf/env"
+VIRTUAL_ENV="/home/jeremy/Desktop/Drf-e-commerce-api/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
