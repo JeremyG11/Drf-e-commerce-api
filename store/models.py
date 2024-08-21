@@ -34,6 +34,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='images/', default = 'images/default.png')
     is_active = models.BooleanField(default=True)
     is_in_stock = models.BooleanField(default=True)
+    
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
