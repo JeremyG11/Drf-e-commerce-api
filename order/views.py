@@ -66,7 +66,10 @@ def delete_order(request, order_id):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def place_order(request):
-    cart_items = request.data.get('items', [])  # Get the cart items from the request data
+    """
+    Place a new order with the items in the cart and return the order details.
+    """
+    cart_items = request.data.get('items', [])  
 
     if not cart_items:
         return Response({"Error": "Cart items are missing. Cannot place an empty order."}, status=status.HTTP_400_BAD_REQUEST)
