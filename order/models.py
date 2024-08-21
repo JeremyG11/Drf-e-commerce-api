@@ -25,6 +25,9 @@ class OrderItem(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     unit_price = models.DecimalField(max_digits=10, decimal_places=2)
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
     def subtotal(self):
         # Calculate the subtotal for the order item (unit price * quantity)
         return self.unit_price * self.quantity
