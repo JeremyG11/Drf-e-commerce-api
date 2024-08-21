@@ -8,5 +8,8 @@ from .serializers import UserSerializer
 
 
 class UserListView(generics.ListCreateUpdateDestroyAPIView):
+    """
+    List all users, or create a new user.
+    """
     queryset = User.objects.all()
     serializer_class = UserSerializer
