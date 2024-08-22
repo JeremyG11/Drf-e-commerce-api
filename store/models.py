@@ -25,7 +25,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     """
-        
+    Product model for the store
     """
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE) 
     item_name = models.CharField(max_length=255)
