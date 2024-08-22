@@ -12,5 +12,8 @@ class CategoryListView(generics.ListCreateAPIView):
     
     
 class ProductListView(generics.ListCreateAPIView):
+    """ 
+    List all products, or create a new product.
+    """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
