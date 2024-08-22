@@ -24,6 +24,9 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    """
+        
+    """
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE) 
     item_name = models.CharField(max_length=255)
     created_by = models.ForeignKey(User, related_name='product_creator', on_delete=models.CASCADE, default='Admin')
