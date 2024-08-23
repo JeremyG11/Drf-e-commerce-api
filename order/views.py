@@ -36,7 +36,7 @@ def get_order(request, id):
 @api_view(['PUT'])
 def update_order(request, order_id):
     """
-    Update the order details.
+    Update the order details. Only allow updating the order status.
     """
     
     order = get_object_or_404(Order, id=order_id)
