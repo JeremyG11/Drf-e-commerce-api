@@ -47,7 +47,9 @@ def update_order(request, order_id):
 
     serializer = OrderSerializer(order, data=request.data, partial=True)
     if serializer.is_valid():
+   
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
     return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR )
 
 
