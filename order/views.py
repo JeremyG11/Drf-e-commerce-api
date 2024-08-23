@@ -36,6 +36,7 @@ def get_order(request, id):
 @api_view(['PUT'])
 def update_order(request, order_id):
     """
+    
     Update an order with the given order_id. 
     """
     
