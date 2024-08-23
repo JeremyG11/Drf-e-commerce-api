@@ -37,7 +37,6 @@ def get_order(request, id):
 def update_order(request, order_id):
     """
     Update an order with the given order_id. 
- 
     """
     
     order = get_object_or_404(Order, id=order_id)
